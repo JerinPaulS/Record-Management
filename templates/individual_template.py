@@ -1,0 +1,1 @@
+class individual_record_template:

@@ -1,6 +1,6 @@
 import pandas as pd
 from repository import repository
-from individual import individual
+from model.individual import individual
 import json
 import numpy as np
 from DataCleaning import data_cleaning
