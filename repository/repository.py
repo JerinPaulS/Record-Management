@@ -98,3 +98,23 @@ class repository:
             cursor.close()
         print("Persist of family details into db completed!")
         cursor.close()
+
+    def get_family_record(self, familyId):
+        self.innit_connection()
+        cursor = self.conn.cursor()
+        results = None
+        
+        try:
+            query  = "SELECT individual_id, family_id, relationship, full_name, dob, gender, spouse_name, place_of_birth, date_of_baptism, place_of_baptism, date_of_confirmation, place_of_confirmation, date_of_wedding, membership_status FROM individual_details WHERE family_id=\'{}\';".format(str(familyId))
+            cursor.execute(query)
+            results = cursor.fetchall()
+        except (Exception, psycopg2.DatabaseError) as error:
+            print("Error: %s" % error)
+            self.conn.rollback()
+            cursor.close()
+        
+        print("Fetched family records for family ID{}!".format(familyId))        
+        
+        cursor.close()
+        self.close_connection()
+        return results
