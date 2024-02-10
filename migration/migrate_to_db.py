@@ -1,9 +1,9 @@
 import pandas as pd
-from repository import repository
 from model.individual import individual
 import json
 import numpy as np
-from DataCleaning import data_cleaning
+from repository.repository import repository
+from data_cleaning.DataCleaning import data_cleaning
 
 class migrate_to_db:
 
